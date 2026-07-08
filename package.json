@@ -1,0 +1,15 @@
+{
+  "name": "influencer",
+  "version": "0.2.0",
+  "description": "Plan an influencer marketing strategy and research influencers across Instagram, TikTok, and X/Twitter through browser automation. Strategy builder + discovery, engagement-rate scoring, posting recency, bio link extraction, and CSV/JSON export.",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=20.12.0"
+  },
+  "peerDependencies": {
+    "@vellumai/plugin-api": ">=0.8.0 <1.0.0"
+  },
+  "vellum": {}
+}
