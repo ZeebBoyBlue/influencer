@@ -1,10 +1,10 @@
 # Influencer Research
 
-Research influencers across Instagram, TikTok, and X/Twitter through your assistant's browser. Plan your campaign strategy, then find, vet, and shortlist the right creators.
+Research influencers across Instagram, TikTok, and X/Twitter through your assistant's browser. Plan your campaign strategy, find, vet, and shortlist the right creators, then track them in an interactive dashboard.
 
 ## What it does
 
-**Two skills:**
+**Three skills:**
 
 1. **Influencer Strategy Builder** — Walks you through building an influencer marketing campaign from scratch: goals, target audience, platform selection, influencer tiers, budget allocation. Produces a concrete campaign brief, then hands off to the research skill with the right search criteria.
 
@@ -14,6 +14,8 @@ Research influencers across Instagram, TikTok, and X/Twitter through your assist
    - **Score** candidates against your campaign criteria (follower ranges, engagement rate minimums, verified-only, exclude dormant, query relevance)
    - **Compare** a shortlist — ranked output grouped by platform with full enrichment data
    - **Export** to CSV or JSON — ready to share with a team or import into a CRM
+
+3. **Influencer Dashboard** — Turns a shortlist export into a persistent interactive app: summary stats, sortable/filterable table, engagement-vs-score chart, per-influencer detail with outreach links, and an editable outreach status tracker (not contacted → signed).
 
 All browser operations run through the `assistant browser` CLI. Helper scripts handle deterministic parsing, scoring, engagement math, and comparison via `bun`.
 
@@ -32,6 +34,7 @@ Then just ask your assistant — e.g. "I want to run an influencer campaign for 
 - Vellum desktop assistant (macOS)
 - `bun` installed on the host machine
 - Browser automation enabled (`assistant browser` CLI)
+- **Recommended:** the [Vellum Assistant Chrome extension](https://chromewebstore.google.com/detail/vellum-assistant/hphbdmpffeigpcdjkckleobjmhhokpne) — extension mode drives your real signed-in Chrome, which is what gets past Instagram/TikTok/X sign-in walls. The research skill walks you through setup on first run.
 
 ## How it works
 

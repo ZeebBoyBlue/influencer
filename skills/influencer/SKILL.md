@@ -41,6 +41,28 @@ Two tool channels:
 
 ## Step graph (state machine)
 
+### Step 0: Browser setup (run once per session)
+
+Verify a browser backend is ready before any discovery:
+
+```bash
+assistant browser status
+```
+
+(run via `host_bash` — the browser lives on the user's machine)
+
+**Preferred backend: `extension`.** Instagram, TikTok, and X/Twitter aggressively wall off logged-out and automated browsers. Extension mode drives the user's real, signed-in Chrome — it inherits their sessions and passes as normal browsing. Local Playwright works as a fallback but hits sign-in walls and challenges far more often.
+
+If `status` shows `✗ extension` ("no Chrome Extension is connected"), walk the user through setup:
+
+1. Ask them to install the **Vellum Assistant** Chrome extension:
+   https://chromewebstore.google.com/detail/vellum-assistant/hphbdmpffeigpcdjkckleobjmhhokpne
+2. After installing, have them click the Vellum Assistant icon in Chrome's toolbar (pin it from the puzzle-piece menu if hidden) and confirm it shows as connected to their assistant.
+3. Re-run `assistant browser status` until `extension` shows `✓`. The status output includes remediation steps — follow those over anything written here if they differ.
+4. Have the user sign in to the target platform(s) (Instagram / TikTok / X) in that Chrome profile if they aren't already. Their sessions are what make discovery work.
+
+If the user declines the extension, proceed with the recommended backend from `status`, but warn that sign-in walls are likely and the retry/fallback policy below will kick in more often.
+
 ### Step 1: Route intent
 
 Use deterministic routing when intent is unclear:
@@ -158,6 +180,8 @@ bun scripts/influencer-export.ts --format json --input-json '<json payload with 
 ```
 
 The CSV includes all enrichment fields (platform, username, followers, verified, score, engagement rate, last post, posts/week, themes, bio links, flags, profile URL) — ready to share with a team or import into a CRM.
+
+After export, offer to build an interactive dashboard from the shortlist — load the `influencer-dashboard` skill and pass it the JSON export.
 
 ## Retry and fallback policy
 

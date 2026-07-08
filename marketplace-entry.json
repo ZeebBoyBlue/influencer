@@ -2,11 +2,11 @@
   "name": "influencer",
   "source": {
     "source": "github",
-    "repo": "vellum-ai/influencer",
-    "ref": "COMMIT_SHA_AFTER_PUSH"
+    "repo": "ZeebBoyBlue/influencer",
+    "ref": "7de9c4c20958c39e65ad9df71e660fe80b94f270"
   },
   "description": "Find and research influencers on Instagram, TikTok, and X/Twitter. Includes a strategy builder skill that walks from campaign brief to research criteria, and a research skill that discovers real profiles via browser automation, computes engagement rates, scores candidates, and exports ranked shortlists to CSV/JSON.",
   "category": "marketing",
-  "homepage": "https://github.com/vellum-ai/influencer",
+  "homepage": "https://github.com/ZeebBoyBlue/influencer",
   "license": "MIT"
 }
