@@ -130,7 +130,28 @@ For each selected candidate profile:
 bun scripts/influencer-engagement.ts --followers <n> --input-json '<json payload with post metrics array>'
 ```
 
-5. Merge engagement results into profile objects, then score with criteria:
+5. Merge engagement results into profile objects, then score with criteria. **The merge shape matters**: nest the engagement script's output under an `engagement` key on each profile — do not flatten `engagementRate` to the top level, or the scorer reports `engagement:unknown`:
+
+```json
+{"profiles":[{
+  "platform": "instagram",
+  "username": "example",
+  "followers": 9165,
+  "verified": false,
+  "bio": "...",
+  "bioLinks": ["https://..."],
+  "lastPostDate": "2026-06-28",
+  "profileUrl": "https://www.instagram.com/example/",
+  "engagement": {
+    "engagementRate": 3.49,
+    "avgLikes": 302,
+    "avgComments": 18,
+    "isDormant": false,
+    "isLowEngagement": false,
+    "suspiciousFlags": []
+  }
+}]}
+```
 
 ```bash
 bun scripts/influencer-score.ts --query "<user query>" --min-followers <n> --max-followers <n> --verified-only <true|false> --min-engagement <rate> --exclude-dormant <true|false> --max-days-since-post <n> --input-json '<json payload with profiles including engagement data>'
@@ -179,9 +200,19 @@ bun scripts/influencer-export.ts --format csv --input-json '<json payload with c
 bun scripts/influencer-export.ts --format json --input-json '<json payload with compared influencers>' > shortlist.json
 ```
 
+The input payload shape is `{"influencers": [...]}` (the array from `influencer-compare.ts`'s `data` field). Both formats print raw output to stdout — pipe straight to a file, no envelope to unwrap.
+
 The CSV includes all enrichment fields (platform, username, followers, verified, score, engagement rate, last post, posts/week, themes, bio links, flags, profile URL) — ready to share with a team or import into a CRM.
 
 After export, offer to build an interactive dashboard from the shortlist — load the `influencer-dashboard` skill and pass it the JSON export.
+
+## Extension mode: tab discipline
+
+Extension mode drives the user's real Chrome, and extraction follows the **active tab**. Two rules from live testing:
+
+- Before extracting, run `assistant browser --session <s> --browser-mode extension tabs list` and `tabs select --tab-id <id>` to pin the tab you're working in. If the user focuses a different tab or window mid-run, your extract will silently return that page instead (this happens in practice).
+- Tell the user at the start of a discovery run: "I'm driving a tab in your Chrome — avoid switching tabs/windows while a step is running." Keep steps short so their browser isn't hostage for long.
+- The Chrome extension only works in real Chrome. Arc and other Chromium forks may show the extension popup as connected but never register with the assistant — if `status` shows `✗ extension` while the popup says connected, ask which browser they're using.
 
 ## Retry and fallback policy
 

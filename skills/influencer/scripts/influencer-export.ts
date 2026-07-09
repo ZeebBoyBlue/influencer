@@ -111,12 +111,9 @@ async function main(): Promise<void> {
       format: format as ExportFormat,
     });
 
-    // For CSV, output raw text (not wrapped in ok envelope) so it can be piped to a file
-    if (format === "csv") {
-      process.stdout.write(`${data}\n`);
-    } else {
-      printJson({ ok: true, data });
-    }
+    // Output raw text (not wrapped in an ok envelope) for both formats,
+    // so stdout can be piped directly to a file: `... > shortlist.csv|json`
+    process.stdout.write(`${data}\n`);
   } catch (error) {
     printError(error instanceof Error ? error.message : String(error));
   }

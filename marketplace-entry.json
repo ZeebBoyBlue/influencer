@@ -3,9 +3,9 @@
   "source": {
     "source": "github",
     "repo": "ZeebBoyBlue/influencer",
-    "ref": "7de9c4c20958c39e65ad9df71e660fe80b94f270"
+    "ref": "fe7718e2b8a2f9e834e835c7ce71c8ea2c13f259"
   },
-  "description": "Find and research influencers on Instagram, TikTok, and X/Twitter. Includes a strategy builder skill that walks from campaign brief to research criteria, and a research skill that discovers real profiles via browser automation, computes engagement rates, scores candidates, and exports ranked shortlists to CSV/JSON.",
+  "description": "Find and research influencers on Instagram, TikTok, and X/Twitter. Includes a strategy builder that walks from campaign brief to research criteria, a research skill that discovers real profiles via browser automation, scores candidates, and exports ranked shortlists, and a dashboard skill that turns the shortlist into an interactive outreach tracker.",
   "category": "marketing",
   "homepage": "https://github.com/ZeebBoyBlue/influencer",
   "license": "MIT"
