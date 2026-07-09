@@ -1,4 +1,4 @@
-# Influencer Research
+# Influencer Marketing
 
 Research influencers across Instagram, TikTok, and X/Twitter through your assistant's browser. Plan your campaign strategy, find, vet, and shortlist the right creators, then track them in an interactive dashboard.
 
@@ -24,7 +24,7 @@ All browser operations run through the `assistant browser` CLI. Helper scripts h
 From the Vellum plugin marketplace:
 
 ```bash
-assistant plugins install influencer
+assistant plugins install influencer-marketing
 ```
 
 Then just ask your assistant — e.g. "I want to run an influencer campaign for my fitness app" (routes to strategy), or "find fitness creators on Instagram with 10k-100k followers" (routes directly to research).

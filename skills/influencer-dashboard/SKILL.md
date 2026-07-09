@@ -42,7 +42,7 @@ Each influencer record from the export pipeline has these fields (all may be pre
   "followers": 10000,
   "verified": true,
   "score": 82,
-  "engagementRate": 0.034,
+  "engagementRate": 3.49,
   "lastPostDate": "2026-07-01",
   "postsPerWeek": 3,
   "themes": ["leather goods"],
@@ -52,7 +52,7 @@ Each influencer record from the export pipeline has these fields (all may be pre
 }
 ```
 
-Note: `engagementRate` is a decimal fraction (0.034 = 3.4%). Render as a percentage.
+Note: `engagementRate` is already in **percent units** (3.49 = 3.49%). Render with a `%` suffix — do NOT multiply by 100. The `engagementRateLabel` field, when present, is the pre-formatted display string.
 
 ## Dashboard spec
 

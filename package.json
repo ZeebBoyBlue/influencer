@@ -1,6 +1,6 @@
 {
-  "name": "influencer",
-  "version": "0.3.1",
+  "name": "influencer-marketing",
+  "version": "0.3.2",
   "description": "Plan an influencer marketing strategy, research influencers across Instagram, TikTok, and X/Twitter through browser automation, and build an interactive dashboard from the results. Strategy builder + discovery, engagement-rate scoring, posting recency, bio link extraction, CSV/JSON export, and a shortlist dashboard skill.",
   "private": true,
   "license": "MIT",
